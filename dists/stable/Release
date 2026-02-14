@@ -1,0 +1,31 @@
+Origin: vanish
+Label: vanish
+Suite: stable
+Codename: stable
+Architectures: amd64 arm64
+Components: main
+Date: Sat, 14 Feb 2026 23:21:05 +0000
+MD5Sum:
+ 53d4f3482d15741155cb10bd0c6d19bc              142 Release
+ 0055fd9d6b684298e32182c3a16f5f04              474 main/binary-amd64/Packages
+ 52dd43047aed535febf4bc6eb9651eeb              384 main/binary-amd64/Packages.gz
+ 048a04527b9b08e019a132924279e40b              474 main/binary-arm64/Packages
+ 29441be2109eac6deb3308e98bc4b729              385 main/binary-arm64/Packages.gz
+SHA1:
+ 61c6585577a58af07d6914a52e7967bb358beaeb              142 Release
+ d44f45e8fa74edf059e6b6fdb70d6551bd906c35              474 main/binary-amd64/Packages
+ 3373d6be4838f5434ba8a7a24d8a1e43aedc71d0              384 main/binary-amd64/Packages.gz
+ 568b27d8c95d1afeed53f8a918d1b05f0e6a9985              474 main/binary-arm64/Packages
+ b6edf008aaf99b37e4b4f22f57a70ecc7cfef29b              385 main/binary-arm64/Packages.gz
+SHA256:
+ 0bfe664695160137829bfea8f43509fd3062cbea42ebe2c43c71be33e202f208              142 Release
+ 578b8896340404f277fef4903344f6e2fba5a2ae9a67eb5a6b4123921776a669              474 main/binary-amd64/Packages
+ 26537f2b5a8b503e57a761fae824d4de444c6890f564f4eb313bb05730197dc7              384 main/binary-amd64/Packages.gz
+ 76b5e882f54ec323bc4942452f2189eb40d9468ad1ed1f0e9ad4f8dab23b6eb3              474 main/binary-arm64/Packages
+ 217ad6896b67e85944b3327ea9c758c4a314f6ff6d04d55bceaf95b7c7ed57d7              385 main/binary-arm64/Packages.gz
+SHA512:
+ bc1dab7067599ed3d74c2279fa9a68c3f4ad29702a9d69c3c19a91639d48e8c05d17a9af5a918e97a259b7a2870c9465049164a8c2f4768a32fb79e4ffbcf3de              142 Release
+ 7e1feb71340fdb2ba9ce364741f553d6c34bc755dfeb0299fa16a8acdbbcc3d0aff565b5a346f1a0ef7689d9fbfb9d18b1810ba9993323d51ec4a01e5bf42abb              474 main/binary-amd64/Packages
+ ff12e30232c4e733438a996ac445dc928611a03fab023cf24baa4a2fbc51c295121ee9c9e879e29a6ce398741cd170b0d04581bf7a3804731dee6913b2cc3180              384 main/binary-amd64/Packages.gz
+ f7c83ed2c1fb07d2b34c91dfce9ef94acf0441c2d6293630aaa452e43383ff8aca2029302e170a1db77b52f01f9eb46f93ba649930f46f46259825edacd47cc0              474 main/binary-arm64/Packages
+ 584177cb78cc0fad5f33ebd9614e7bbd1294fc78104a1bec8915f434815cf98c952daea877081f667f74f90da607e6a4d79eb9606a328953b02650b40c8157d0              385 main/binary-arm64/Packages.gz

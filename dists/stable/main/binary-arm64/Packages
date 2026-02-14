@@ -1,0 +1,15 @@
+Package: vanish
+Version: 0.1.0
+Architecture: arm64
+Maintainer: Alfred <alfredgpennyworth@gmail.com>
+Installed-Size: 67290
+Filename: ./vanish_arm64.deb
+Size: 27688690
+MD5sum: 8aab91e257b1c6afe74484df31423483
+SHA1: 9948590c49260bb56071841add6ed5d5c7d82110
+SHA256: 9247dc27815feab9304c03db28a28b7f65ba47236956ce9c3b94f08d430ee9ad
+Priority: optional
+Homepage: https://vanish.link
+Description: Zero-knowledge self-destructing links. E2E encrypted with AES-256-GCM.
+License: MIT
+
