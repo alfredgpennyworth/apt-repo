@@ -1,0 +1,93 @@
+name: Update APT Repo
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g. v0.1.0)'
+        required: true
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        run: sudo apt-get install -y dpkg-dev gpg
+
+      - name: Download .deb packages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${{ inputs.version }}"
+          mkdir -p pool/main
+          gh release download "$VERSION" -p "*.deb" -R alfredgpennyworth/vanish-link -D pool/main/
+
+      - name: Generate GPG key (if not exists)
+        run: |
+          if [ ! -f key.gpg ]; then
+            gpg --batch --gen-key <<EOF
+          Key-Type: RSA
+          Key-Length: 4096
+          Name-Real: Alfred GPennyworth
+          Name-Email: alfredgpennyworth@gmail.com
+          Expire-Date: 0
+          %no-protection
+          EOF
+            gpg --export --armor > key.gpg
+          fi
+
+      - name: Build repo index
+        run: |
+          mkdir -p dists/stable/main/binary-amd64
+          mkdir -p dists/stable/main/binary-arm64
+          
+          cd pool/main
+          dpkg-scanpackages --arch amd64 . > ../../dists/stable/main/binary-amd64/Packages
+          dpkg-scanpackages --arch arm64 . > ../../dists/stable/main/binary-arm64/Packages
+          cd ../..
+          
+          gzip -k dists/stable/main/binary-amd64/Packages
+          gzip -k dists/stable/main/binary-arm64/Packages
+          
+          # Create Release file
+          cd dists/stable
+          cat > Release << EOF
+          Origin: vanish
+          Label: vanish
+          Suite: stable
+          Codename: stable
+          Architectures: amd64 arm64
+          Components: main
+          EOF
+          
+          apt-ftparchive release . >> Release
+          cd ../..
+          
+          gpg --yes --armor --detach-sign -o dists/stable/InRelease dists/stable/Release || true
+          gpg --yes --armor --detach-sign -o dists/stable/Release.gpg dists/stable/Release || true
+
+      - name: Commit and push
+        run: |
+          git config user.name "Alfred"
+          git config user.email "alfredgpennyworth@gmail.com"
+          git add -A
+          git commit -m "Update repo: ${{ inputs.version }}" || true
+          git push
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to Pages
+        uses: actions/deploy-pages@v4
